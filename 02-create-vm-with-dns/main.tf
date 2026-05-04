@@ -16,7 +16,7 @@ resource "azurerm_network_interface" "main" {
 }
 
 
-resource "azurerm_virtual_machine" "main" {
+resource "azurerm_linux_virtual_machine" "main" {
   name                  = "test-vm"
   location              = "Denmark East"
   resource_group_name   = "denmark-east-rg"
