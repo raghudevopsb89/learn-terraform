@@ -46,4 +46,7 @@ resource "azurerm_virtual_machine" "main" {
     disable_password_authentication = false
   }
 
+  secure_boot_enabled = true
+  vtpm_enabled        = true
+
 }
