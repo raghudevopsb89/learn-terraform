@@ -7,7 +7,7 @@ provider "azurerm" {
 }
 
 variable "components" {
-  default = ["frontend", "mysql", "catalogue"]
+  default = ["frontend", "mysql", "mongodb", "catalogue"]
 }
 
 resource "azurerm_network_interface" "private-ips" {
