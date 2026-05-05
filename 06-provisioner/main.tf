@@ -54,7 +54,7 @@ resource "azurerm_linux_virtual_machine" "frontend" {
     }
 
     inline = [
-      "sudo dnf install nginx",
+      "sudo dnf install nginx -y",
       "sudo systemctl start nginx"
     ]
 
