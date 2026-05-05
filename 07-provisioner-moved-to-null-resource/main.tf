@@ -58,7 +58,7 @@ resource "null_resource" "main" {
     }
 
     inline = [
-      "sudo dnf install nginx",
+      "sudo dnf install nginx -y",
       "sudo systemctl start nginx"
     ]
   }
