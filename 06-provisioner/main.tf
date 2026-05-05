@@ -4,19 +4,19 @@ provider "azurerm" {
 
 
 resource "azurerm_public_ip" "frontend" {
-  name                = "frontend"
+  name                = "frontend1"
   location            = "Denmark East"
   resource_group_name = "denmark-east-rg"
   allocation_method   = "Static"
 }
 
 resource "azurerm_network_interface" "frontend" {
-  name                = "frontend-nic"
+  name                = "frontend-nic1"
   location            = "Denmark East"
   resource_group_name = "denmark-east-rg"
 
   ip_configuration {
-    name                          =  "frontend-nic"
+    name                          =  "frontend-nic1"
     subnet_id                     = "/subscriptions/3f2e42e1-ca06-4a99-8c56-be8d8ba306db/resourceGroups/denmark-east-rg/providers/Microsoft.Network/virtualNetworks/rhel10-vmVNET/subnets/rhel10-vmSubnet"
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.frontend.id
@@ -24,7 +24,7 @@ resource "azurerm_network_interface" "frontend" {
 }
 
 resource "azurerm_linux_virtual_machine" "frontend" {
-  name                  = "frontend-vm"
+  name                  = "frontend-dev"
   location              = "Denmark East"
   resource_group_name   = "denmark-east-rg"
   network_interface_ids = [azurerm_network_interface.frontend.id]
@@ -63,7 +63,7 @@ resource "azurerm_linux_virtual_machine" "frontend" {
 }
 
 resource "azurerm_dns_a_record" "frontend" {
-  name                = "frontend-dev"
+  name                = "frontend-dev1"
   zone_name           = "rdevopsb89.online"
   resource_group_name = "denmark-east-rg"
   ttl                 = 30
