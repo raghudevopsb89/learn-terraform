@@ -1,6 +1,7 @@
 variable "ex" {
   default = {
     x = 100
+    x1 = 500
     y = 200
   }
 }
