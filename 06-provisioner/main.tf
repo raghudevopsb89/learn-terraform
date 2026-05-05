@@ -1,3 +1,15 @@
+provider "azurerm" {
+  features {}
+}
+
+
+resource "azurerm_public_ip" "frontend" {
+  name                = "frontend"
+  location            = "Denmark East"
+  resource_group_name = "denmark-east-rg"
+  allocation_method   = "Static"
+}
+
 resource "azurerm_network_interface" "frontend" {
   name                = "frontend-nic"
   location            = "Denmark East"
@@ -32,6 +44,21 @@ resource "azurerm_linux_virtual_machine" "frontend" {
 
   secure_boot_enabled = true
   vtpm_enabled        = true
+
+  provisioner "remote-exec" {
+    connection {
+      type = "ssh"
+      user = "devops"
+      password = "DevOps@123456"
+      host = azurerm_network_interface.frontend.private_ip_address
+    }
+
+    inline = [
+      "sudo dnf install nginx",
+      "sudo systemctl start nginx"
+    ]
+
+  }
 
 }
 
