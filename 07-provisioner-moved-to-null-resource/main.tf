@@ -52,6 +52,7 @@ resource "null_resource" "main" {
 
   triggers = {
     instance = azurerm_linux_virtual_machine.frontend.id
+    # always = timestamp()
   }
 
   provisioner "remote-exec" {
