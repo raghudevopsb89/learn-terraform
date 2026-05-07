@@ -49,6 +49,11 @@ resource "azurerm_linux_virtual_machine" "frontend" {
 
 resource "null_resource" "main" {
   depends_on = [azurerm_linux_virtual_machine.frontend]
+
+  triggers = {
+    instance = azurerm_linux_virtual_machine.frontend.id
+  }
+
   provisioner "remote-exec" {
     connection {
       type = "ssh"
