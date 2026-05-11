@@ -1,7 +1,7 @@
 variable "x" {}
 
 output "x" {
-  value = var.x / 2
+  value = var.x % 2
 }
 
 
