@@ -1,6 +1,6 @@
 variable "x" {}
 
 output "x" {
-  value = x / 2
+  value = "${x} / 2"
 }
 
