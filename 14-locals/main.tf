@@ -11,6 +11,10 @@ resource "azurerm_public_ip" "frontend" {
   location            = "Denmark East"
   resource_group_name = "denmark-east-rg"
   allocation_method   = "Static"
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "azurerm_network_interface" "frontend" {
